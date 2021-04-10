@@ -14,7 +14,7 @@ export const removeItemFromCart = (state, action) => {
     ...state,
     cartItems: state.cartItems.map((fruit) =>
       fruit.id === action.item.id ? { ...fruit, quantity: 0 } : fruit
-    )
+    ),
   };
 };
 
@@ -41,17 +41,17 @@ export const sortingByPrice = (cartState, productArray) => {
   }
 };
 
-export const filterByStockAndDelivery = ({ sortedArray, cartState }) => {
+export const filterByStockAndDelivery = (cartState , productArray) => {
   const outOfStockProducts = cartState.showAllProducts
-    ? sortedArray
-    : sortedArray.filter((item) => !item.inStock);
+    ? productArray
+    : productArray.filter((item) => !item.inStock);
   return !cartState.fastDelivery
     ? outOfStockProducts
     : outOfStockProducts.filter((item) => !item.isFastDeliveryAvailable);
 };
 
-export const showPriceRange = (state, data) => {
-  return data.filter(
+export const showPriceRange = (state, productArray) => {
+  return productArray.filter(
     (product) => Number(product.price) < state.priceRangeMaxValue
   );
 };
@@ -64,3 +64,11 @@ export const searchFilter = (state, data) => {
       product.category.toLowerCase().includes(state.searchText.toLowerCase())
   );
 };
+
+export const composeFunction=(cartState,...arrayOfFunctions)=>(productArray)=>{
+
+   return arrayOfFunctions.reduce((filteredArray,element)=>{
+        return element(cartState,filteredArray)
+    },productArray)
+
+}

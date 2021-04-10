@@ -20,6 +20,8 @@ const manageFruitReducer = (state, action) => {
       return { ...state, fastDelivery: !state.fastDelivery };
     case "PRICERANGE":
       return { ...state, priceRangeMaxValue: action.value };
+    case "SEARCH_ACTION":
+      return { ...state, searchText: action.value };
     case "CLEARALLFILTERS":
       return {
         ...state,
@@ -28,12 +30,7 @@ const manageFruitReducer = (state, action) => {
         showAllProducts: true,
         priceRangeMaxValue: 1000,
       };
-    case "VIEWPRODUCT":
-      return { ...state, productPageItem: action.value };
-    case "SETROUTE":
-      return { ...state, route: action.value };
-    case "SEARCH_ACTION":
-      return { ...state, searchText: action.value };
+
     default:
       return state;
   }
@@ -47,19 +44,16 @@ export const CartProvider = ({ children, item: { productLists } }) => {
     showAllProducts: true,
     totalCartValue: 0,
     priceRangeMaxValue: 1000,
-    productPageItem: null,
     searchText: "",
   });
-
-  const sortedArray = util.sortingByPrice(cartState, productLists);
-  const filteredArray = util.searchFilter(
+  const composedFunction = util.composeFunction(
     cartState,
-    util.showPriceRange(
-      cartState,
-      util.filterByStockAndDelivery({ sortedArray, cartState })
-    )
+    util.sortingByPrice,
+    util.filterByStockAndDelivery,
+    util.showPriceRange,
+    util.searchFilter
   );
-
+  const filteredArray = composedFunction(productLists);
   return (
     <CartContext.Provider value={{ cartState, dispatch, filteredArray }}>
       {children}

@@ -1,5 +1,5 @@
 import { useCart } from "../cart-context";
-import { ProductCard} from "./ProductCard";
+import { ProductCard } from "./ProductCard";
 import { ShowQuantityOption } from "./ShowQuantityComponent";
 
 export const Cart = () => {
@@ -9,7 +9,7 @@ export const Cart = () => {
     0
   );
   return (
-    <div style={{marginTop:"5rem"}}>
+    <div style={{ marginTop: "5rem" }}>
       {totalCartValue !== 0 ? (
         <div>Total Cart Value: {totalCartValue}</div>
       ) : (
@@ -22,19 +22,21 @@ export const Cart = () => {
           return (
             <div key={product.id} className='card card-with-text'>
               <div style={{ flexGrow: "1" }}>
-              <ProductCard product={product} />
-              <div>
-                <ShowQuantityOption product={product}/>
-                <p>Total Rs.{product.quantity * product.price}</p>
+                <ProductCard cartItems={product} />
                 <div>
-                  <button className="btn-primary"
-                    onClick={() => dispatch({ type: "REMOVE", item: product })}
-                  >
-                    Remove
-                  </button>
+                  <ShowQuantityOption product={product} />
+                  <p>Total Rs.{product.quantity * product.price}</p>
+                  <div>
+                    <button
+                      className='btn-primary'
+                      onClick={() =>
+                        dispatch({ type: "REMOVE", item: product })
+                      }>
+                      Remove
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
             </div>
           );
         return "";

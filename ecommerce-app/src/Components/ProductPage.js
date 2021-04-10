@@ -5,7 +5,7 @@ import { ShowQuantityOption } from "./ShowQuantityComponent";
 
 export const ProductPage = () => {
   const {
-    cartState: { productPageItem: product, cartItems: cart },
+    cartState: { cartItems: cart },
     filteredArray,
     dispatch,
   } = useCart();
@@ -35,7 +35,10 @@ export const ProductPage = () => {
                       if (cartProduct.id === product.id)
                         return cartProduct.quantity !== 0 ? (
                           <>
-                            <ShowQuantityOption product={product} cartProduct={cartProduct}/>
+                            <ShowQuantityOption
+                              product={product}
+                              cartProduct={cartProduct}
+                            />
                           </>
                         ) : (
                           <AddtoCart product={product} />

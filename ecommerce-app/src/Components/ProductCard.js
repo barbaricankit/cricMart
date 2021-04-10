@@ -8,7 +8,11 @@ export const ProductCard = ({ product, cartItems }) => {
 
   const isProductWishlisted = () => {
     let isWishlisted = false;
-    if (product.isWishListed === undefined) {
+    if(product===undefined)
+    {
+      isWishlisted=cartItems.isWishListed;
+    }
+    else if (product.isWishListed === undefined) {
       isWishlisted = cartItems.find(({ id }) => id === product.id).isWishListed;
     } else {
       isWishlisted = product.isWishListed;
@@ -18,10 +22,23 @@ export const ProductCard = ({ product, cartItems }) => {
   };
   return (
     <>
-      <NavLink to={`/products/product/${product.name}/${product.id}`}>
-        <img className='card-img' src={product.image} alt={product.name} />
+      <NavLink
+        to={`/products/product/${
+          product === undefined ? cartItems.name : product.name
+        }/${product === undefined ? cartItems.id : product.id}`}>
+        <img
+          className='card-img'
+          src={product === undefined ? cartItems.image : product.image}
+          alt={product === undefined ? cartItems.name : product.name}
+        />
       </NavLink>
-      <span onClick={() => dispatch({ type: "WISHLIST", item: product })}>
+      <span
+        onClick={() =>
+          dispatch({
+            type: "WISHLIST",
+            item: product === undefined ? cartItems : product,
+          })
+        }>
         <FontAwesomeIcon
           icon={faHeart}
           className='dismiss-badge'
@@ -29,8 +46,8 @@ export const ProductCard = ({ product, cartItems }) => {
         />
       </span>
       <div className='card-details'>
-        <p>{product.name}</p>
-        <p>Rs. {product.price}</p>
+        <p>{product === undefined ? cartItems.name : product.name}</p>
+        <p>Rs. {product === undefined ? cartItems.price : product.price}</p>
       </div>
     </>
   );

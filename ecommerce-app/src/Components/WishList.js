@@ -3,7 +3,7 @@ import { AddtoCart } from "./AddtoCartComponent";
 import { ShowQuantityOption } from "./ShowQuantityComponent";
 import { ProductCard } from "./ProductCard";
 export const WishList = () => {
-  const { cartState, dispatch } = useCart();
+  const { cartState } = useCart();
   return (
     <div style={{ marginTop: "5rem" }}>
       {cartState.cartItems.find(({ isWishListed }) => isWishListed) ? (

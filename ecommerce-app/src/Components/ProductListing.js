@@ -5,7 +5,7 @@ import { ProductCard } from "./ProductCard";
 import { ShowQuantityOption } from "./ShowQuantityComponent";
 import { VerticalNavBar } from "./VerticalNavBarComponents/VerticalNavBar";
 export const ProductListing = () => {
-  const { dispatch, filteredArray, cartState } = useCart();
+  const {filteredArray, cartState } = useCart();
   const { categoryName } = useParams();
   return (
     <>
@@ -27,15 +27,16 @@ export const ProductListing = () => {
                   />
                 </div>
                 <div>
-                  {cartState.cartItems.map((cartProduct) => {
+                  {cartState.cartItems.map((cartProduct,index) => {
                     if (cartProduct.id === product.id)
                       return cartProduct.quantity !== 0 ? (
                         <ShowQuantityOption
                           product={product}
                           cartProduct={cartProduct}
+                          key={index}
                         />
                       ) : (
-                        <AddtoCart product={product} />
+                        <AddtoCart product={product} key={index} />
                       );
                     return "";
                   })}
