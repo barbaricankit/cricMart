@@ -1,0 +1,104 @@
+@import "https://fluidcss.netlify.app/styles.css";
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.btn-primary{
+  padding:0.5rem 0.7rem;
+}.logo-text {
+  color: black;
+}
+.navigation-top {
+  padding: 0.8rem 0.5rem 0.5rem 0;
+}
+.categories-link {
+  display: none;
+}
+.searchbox {
+  display: none;
+}
+.action-icons {
+  margin-right: 1rem;
+}
+.cart-wishlist {
+  padding-top: 1rem;
+}
+.horizontal-nav-bar {
+  height: 4rem;
+  background-color: white;
+  box-shadow: 1px 5px 5px grey;
+  display: flex;
+  justify-content: space-between;
+}
+.fixed-vertical-bar{
+  display:none;
+}
+.nav-link{
+  color:black;
+}
+.card-with-text{
+  margin:1rem;
+  width:80%;
+}
+.component-details{
+  margin-top:4rem;
+}
+.dismiss-badge{
+  padding:0;
+  width:0;
+  font-size: larger;
+}
+@media only screen and (min-width: 550px) {
+  .textbox {
+    display: inline-block;
+    border: 1px solid gray;
+    border-radius: 7px;
+    padding-left: 0.5rem;
+    width: 50vw;
+  }
+  .srch-icon {
+    display: none;
+  }
+  .searchbox {
+    display: inline-block;
+    position: relative;
+    margin-top: 1rem;
+  }
+  .search-icon {
+    position: absolute;
+    top: 0.6rem;
+    right: 2rem;
+    color: grey;
+  }
+  .card-with-text{
+    width:40%;
+
+  }
+
+}
+@media only screen and (min-width: 1100px) {
+  .categories-link {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .textbox {
+    width: 70vw;
+  }
+  .fixed-vertical-bar{
+    display: block;
+  }
+  .card-with-text{
+    width:29%;
+  }
+  .component-details{
+    margin-top:2rem;
+  }
+}
+
+.filter-options{
+  padding:0.5rem;
+
+}
