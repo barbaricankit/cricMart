@@ -1,12 +1,12 @@
-import { useCart } from "../../cart-context";
+import { useCart } from "../../cart-context/cart-context";
 
 export const Sorting = () => {
-  const { cartState, dispatch } = useCart();
+  const { cartState, cartDispatch } = useCart();
   return (
     <>
       <div
-        style={{ color: "blue", cursor: "pointer" }}
-        onClick={() => dispatch({ type: "CLEARALLFILTERS" })}>
+        className='opt-clear-all'
+        onClick={() => cartDispatch({ type: "CLEARALLFILTERS" })}>
         Clear All Filters
       </div>
       <div>
@@ -20,7 +20,7 @@ export const Sorting = () => {
                 cartState.sortByPrice === "Price_High_to_Low" ? true : false
               }
               onChange={() =>
-                dispatch({
+                cartDispatch({
                   type: "sortByPrice",
                   payload: "Price_High_to_Low",
                 })
@@ -38,7 +38,7 @@ export const Sorting = () => {
                 cartState.sortByPrice === "Price_Low_to_High" ? true : false
               }
               onChange={() =>
-                dispatch({
+                cartDispatch({
                   type: "sortByPrice",
                   payload: "Price_Low_to_High",
                 })

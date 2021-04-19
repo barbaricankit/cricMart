@@ -4,10 +4,10 @@ export const Categories = () => {
 
   return (
     <nav className='categories-link'>
-      <div>Categories</div>
+      <div className="h5">Categories</div>
       <NavLink
         className='nav-link'
-        activeStyle={{ backgroundColor: "blue" }}
+        activeStyle={{ backgroundColor: "#34D399" ,padding:"0.5rem",color:"white"}}
         to='/products/All'>
         <div>All</div>
       </NavLink>
@@ -15,7 +15,7 @@ export const Categories = () => {
         <NavLink
           key={index}
           className='nav-link'
-          activeStyle={{ backgroundColor: "blue" }}
+          activeStyle={{ backgroundColor: "#34D399" ,padding:"0.5rem",color:"white"}}
           to={`/products/${category}`}>
           <div style={{ cursor: "pointer" }}>{category}</div>
         </NavLink>

@@ -1,13 +1,15 @@
 @import "https://fluidcss.netlify.app/styles.css";
-
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: #ecfdf5;
 }
-.btn-primary{
-  padding:0.5rem 0.7rem;
-}.logo-text {
+
+.btn-primary {
+  padding: 0.5rem 0.7rem;
+}
+.logo-icon {
+  color: var(--horizontal-navbar-background-color);
+}
+.logo-text {
   color: black;
 }
 .navigation-top {
@@ -27,28 +29,92 @@
 }
 .horizontal-nav-bar {
   height: 4rem;
-  background-color: white;
-  box-shadow: 1px 5px 5px grey;
+  background-color: #065f46;
+
   display: flex;
   justify-content: space-between;
 }
-.fixed-vertical-bar{
-  display:none;
+.fixed-vertical-bar {
+  display: none;
 }
-.nav-link{
-  color:black;
+.nav-link {
+  color: black;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
-.card-with-text{
-  margin:1rem;
-  width:80%;
+.card-with-text {
+  margin: 1rem;
+  width: 80%;
 }
-.component-details{
-  margin-top:4rem;
+.component-details {
+  margin-top: 4rem;
 }
-.dismiss-badge{
-  padding:0;
-  width:0;
+.card-img {
+  height: 20rem;
+}
+.dismiss-badge {
+  padding: 0;
+  width: 0;
   font-size: larger;
+  color: grey;
+}
+.page-home {
+  margin-top: 6rem;
+  text-align: center;
+}
+.page-cart,
+.page-wishlist,
+.page-product {
+  margin-top: 5rem;
+}
+.item-count-zero {
+  font-size: x-large;
+  font-style: italic;
+  text-align: center;
+  margin-top: 5rem;
+}
+.signin-form {
+  margin: 8rem 1rem 1rem 1rem;
+  border: 1px solid var(--btn-primary-color);
+  border-radius: 10px;
+}
+.signin-form h1 {
+  text-align: center;
+  color: var(--btn-primary-color);
+  margin-top: 1rem;
+}
+.signin-form p {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: large;
+}
+a {
+  color: var(--btn-primary-color);
+}
+.inputbox {
+  border: 1px solid gray;
+  border-radius: 7px;
+  padding: 1rem 0.5rem;
+  margin: 1.5rem;
+
+  width: 90%;
+  font-size: large;
+}
+.signin-form .btn-primary {
+  margin: 1.5rem;
+}
+.signin-form .btn-secondary {
+  float: right;
+  margin: 1rem 1.5rem;
+}
+.password-textbox {
+  position: relative;
+}
+.password-textbox .btn-show-password {
+  position: absolute;
+  margin: 1.5rem;
+  right: 0rem;
+  top: 1rem;
 }
 @media only screen and (min-width: 550px) {
   .textbox {
@@ -57,6 +123,7 @@
     border-radius: 7px;
     padding-left: 0.5rem;
     width: 50vw;
+    padding-right: 1.5rem;
   }
   .srch-icon {
     display: none;
@@ -68,37 +135,95 @@
   }
   .search-icon {
     position: absolute;
-    top: 0.6rem;
-    right: 2rem;
+    top: 0.8rem;
+    right: 1.5rem;
     color: grey;
   }
-  .card-with-text{
-    width:40%;
-
+  .card-with-text {
+    width: 40%;
   }
-
+  .signin-form {
+    margin: 8rem 2rem;
+    border: 1px solid var(--btn-primary-color);
+    border-radius: 10px;
+  }
 }
 @media only screen and (min-width: 1100px) {
   .categories-link {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    margin: 1rem 1rem 1rem 0;
   }
   .textbox {
-    width: 70vw;
+    width: 65vw;
   }
-  .fixed-vertical-bar{
+  .fixed-vertical-bar {
     display: block;
+    background-color: #d1fae5;
+    margin-top: 4rem;
   }
-  .card-with-text{
-    width:29%;
+  .card-with-text {
+    width: 29%;
   }
-  .component-details{
-    margin-top:2rem;
+  .component-details {
+    margin-top: 2rem;
+  }
+  .signin-form {
+    margin: 8rem auto;
+    border: 1px solid var(--btn-primary-color);
+    border-radius: 10px;
+    width: 40%;
+  }
+  .signin-form p {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: large;
+  }
+
+  a {
+    color: var(--btn-primary-color);
+  }
+  .inputbox {
+    border: 1px solid gray;
+    border-radius: 7px;
+    padding: 1rem 0.5rem;
+    margin: 1.5rem;
+    font-size: large;
+  }
+
+  .avatar-double-letter {
+    background-color: var(--btn-primary-color);
+  }
+  .dropdown-content {
+    background-color: white;
+    top: 2rem;
+    right: 0.5rem;
+    padding: 1rem 6rem 0.5rem 0rem;
+    width: fit-content;
+  }
+  .dropdown-content .dropdown-link {
+    color: var(--btn-primary-color);
+  }
+  .opt-clear-all {
+    color: var(--vertical-navbar-background-color);
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+  }
+  .product {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-areas: "image detail";
+  }
+  .productImg {
+    grid-area: image;
+    margin: 1rem;
+  }
+  .productDetails {
+    grid-area: detail;
+    margin: 1rem;
   }
 }
 
-.filter-options{
-  padding:0.5rem;
-
+.filter-options {
+  padding: 0.5rem;
 }

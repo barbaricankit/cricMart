@@ -1,31 +1,32 @@
-export const manageCart = (state, fruitObj, incOrDec) => {
+export const manageCart = (state, product_id, incOrDec) => {
   return {
     ...state,
-    cartItems: state.cartItems.map((fruit) =>
-      fruitObj.id === fruit.id
-        ? { ...fruit, quantity: fruit.quantity + incOrDec }
-        : fruit
+    cartItems: state.cartItems.find(({ productId }) => productId === product_id)
+      ? state.cartItems.map(({ productId, quantity }) =>
+          productId === product_id
+            ? { productId, quantity: quantity + incOrDec }
+            : { productId, quantity }
+        )
+      : [...state.cartItems, { productId: product_id, quantity: 1 }],
+  };
+};
+
+export const removeItemFromCart = (state, product_id) => {
+  console.log(product_id);
+  return {
+    ...state,
+    cartItems: state.cartItems.filter(
+      (cartItem) => cartItem.productId !== product_id
     ),
   };
 };
 
-export const removeItemFromCart = (state, action) => {
+export const manageWishList = (state, product_id) => {
   return {
     ...state,
-    cartItems: state.cartItems.map((fruit) =>
-      fruit.id === action.item.id ? { ...fruit, quantity: 0 } : fruit
-    ),
-  };
-};
-
-export const manageWishList = (state, fruitObj) => {
-  return {
-    ...state,
-    cartItems: state.cartItems.map((fruit) =>
-      fruitObj.id === fruit.id
-        ? { ...fruit, isWishListed: !fruit.isWishListed }
-        : fruit
-    ),
+    wishList: state.wishList.find((id) => id === product_id)
+      ? state.wishList.filter((id) => id !== product_id)
+      : [...state.wishList, product_id],
   };
 };
 
@@ -41,7 +42,7 @@ export const sortingByPrice = (cartState, productArray) => {
   }
 };
 
-export const filterByStockAndDelivery = (cartState , productArray) => {
+export const filterByStockAndDelivery = (cartState, productArray) => {
   const outOfStockProducts = cartState.showAllProducts
     ? productArray
     : productArray.filter((item) => !item.inStock);
@@ -65,10 +66,10 @@ export const searchFilter = (state, data) => {
   );
 };
 
-export const composeFunction=(cartState,...arrayOfFunctions)=>(productArray)=>{
-
-   return arrayOfFunctions.reduce((filteredArray,element)=>{
-        return element(cartState,filteredArray)
-    },productArray)
-
-}
+export const composeFunction = (cartState, ...arrayOfFunctions) => (
+  productArray
+) => {
+  return arrayOfFunctions.reduce((filteredArray, element) => {
+    return element(cartState, filteredArray);
+  }, productArray);
+};

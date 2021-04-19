@@ -1,6 +1,6 @@
-import { useCart } from "../../cart-context";
+import { useCart } from "../../cart-context/cart-context";
 export const Filtering = () => {
-  const { cartState, dispatch } = useCart();
+  const { cartState, cartDispatch } = useCart();
   return (
     <>
       <div>
@@ -11,7 +11,7 @@ export const Filtering = () => {
               type='checkbox'
               checked={cartState.showAllProducts}
               onChange={() =>
-                dispatch({
+                cartDispatch({
                   type: "SHOWALLPRODUCTS",
                 })
               }
@@ -25,7 +25,7 @@ export const Filtering = () => {
               type='checkbox'
               checked={cartState.fastDelivery}
               onChange={() =>
-                dispatch({
+                cartDispatch({
                   type: "FASTDELIVERY",
                 })
               }
@@ -43,7 +43,7 @@ export const Filtering = () => {
           step='10'
           value={cartState.priceRangeMaxValue}
           onInput={(e) =>
-            dispatch({ type: "PRICERANGE", value: e.target.value })
+            cartDispatch({ type: "PRICERANGE", value: e.target.value })
           }
         />
       </label>
