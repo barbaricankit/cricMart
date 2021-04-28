@@ -4,17 +4,21 @@ import ProductCardImage from "./ProductCardImage";
 
 export const ProductCard = ({ product }) => {
   return (
-    <div style={{ flexGrow: "1" }}>
+    <>
       <ProductCardImage product={product} />
       <WishListButton
         product_id={product._id}
         wishlist={product.isWishListed}
       />
-      <ProductCardDetails
-        name={product.name}
-        price={product.price}
-        category={product.category_name}
-      />
-    </div>
+      <div className='card-details'>
+        <ProductCardDetails
+          id={product._id}
+          name={product.name}
+          price={product.price}
+          category={product.category_name}
+          quantity={product.quantity}
+        />
+      </div>
+    </>
   );
 };

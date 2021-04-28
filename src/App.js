@@ -4,7 +4,7 @@ import { WishList } from "./Components/private/WishList";
 import "./App.css";
 import { ProductPage } from "./Components/ProductPage/ProductPage";
 
-import { Navigation } from "./Components/Navigation";
+import { Navigation } from "./Components/nav";
 import { Homepage } from "./Components/Homepage/Homepage";
 import { Routes, Route } from "react-router";
 import { Login } from "./Auth/Login";

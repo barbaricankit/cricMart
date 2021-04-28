@@ -12,18 +12,15 @@ export const ProductListing = () => {
       : filteredArray.filter((item) => item.category_name === categoryName);
 
   return (
-    <>
+    <div className='main-content'>
       <VerticalNavBar />
-      <div
-        className='component-details'
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-        }}>
-        {products.map((product) => (
-          <ProductPageCard product={product} key={product._id} />
-        ))}
+      <div className='content'>
+        <div className='cards'>
+          {products.map((product) => (
+            <ProductPageCard product={product} key={product._id} />
+          ))}
+        </div>
       </div>
-    </>
+    </div>
   );
 };

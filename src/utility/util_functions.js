@@ -12,7 +12,6 @@ export const manageCart = (state, product_id, incOrDec) => {
 };
 
 export const removeItemFromCart = (state, product_id) => {
-  console.log(product_id);
   return {
     ...state,
     cartItems: state.cartItems.filter(
@@ -62,7 +61,9 @@ export const searchFilter = (state, data) => {
   return data.filter(
     (product) =>
       product.name.toLowerCase().includes(state.searchText.toLowerCase()) ||
-      product.category.toLowerCase().includes(state.searchText.toLowerCase())
+      product.category_name
+        .toLowerCase()
+        .includes(state.searchText.toLowerCase())
   );
 };
 

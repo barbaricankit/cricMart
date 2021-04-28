@@ -1,10 +1,18 @@
+import { useEffect, useState } from "react";
 import { useCart } from "../../cart-context/cart-context";
 export const Filtering = () => {
   const { cartState, cartDispatch } = useCart();
+  const [inputPrice, setPrice] = useState(cartState.priceRangeMaxValue);
+
+  useEffect(() => {
+    setPrice(cartState.priceRangeMaxValue);
+  }, [cartState.priceRangeMaxValue]);
   return (
     <>
       <div>
-        <legend>Filters</legend>
+        <legend>
+          <div className='h4'>Filters</div>
+        </legend>
         <div className='filter-options'>
           <label>
             <input
@@ -16,7 +24,7 @@ export const Filtering = () => {
                 })
               }
             />
-            Include Out of Stock
+            <span className='input_field'>Include Out of Stock</span>
           </label>
         </div>
         <div className='filter-options'>
@@ -30,22 +38,40 @@ export const Filtering = () => {
                 })
               }
             />
-            Fast Delivery Only
+            <span className='input_field'>Fast Delivery Only</span>
           </label>
         </div>
       </div>
       <label style={{ display: "block", marginTop: "1rem" }}>
-        Price Range
+        <div className='h4'>Price Range</div>
         <input
           type='range'
           min='0'
-          max='1000'
+          max='50000'
           step='10'
-          value={cartState.priceRangeMaxValue}
-          onInput={(e) =>
-            cartDispatch({ type: "PRICERANGE", value: e.target.value })
-          }
+          className='filter-options'
+          value={inputPrice}
+          onInput={(e) => {
+            setPrice(e.target.value);
+            cartDispatch({ type: "PRICERANGE", value: e.target.value });
+          }}
         />
+        <div>
+          <label>
+            <span className='filter-options'>Min</span>
+            <input disabled type='number' value='0' className='min_range' />
+            <span className='filter-options'>Max</span>
+            <input
+              onChange={(e) => {
+                setPrice(e.target.value);
+                cartDispatch({ type: "PRICERANGE", value: e.target.value });
+              }}
+              type='number'
+              value={inputPrice}
+              className='max_range'
+            />
+          </label>
+        </div>
       </label>
     </>
   );

@@ -9,9 +9,9 @@ export const AddMore = ({ quantity, product_id }) => {
     state: { userId },
   } = useAuth();
   return (
-    <div>
+    <>
       <button
-        className='btn-primary'
+        className='btn-primary btn-bg-color left-margin'
         onClick={() => {
           cartDispatch({ type: "INCREMENT", item: product_id });
           callServer({
@@ -22,9 +22,9 @@ export const AddMore = ({ quantity, product_id }) => {
         }}>
         <FontAwesomeIcon icon={faPlus} />
       </button>
-      <span> {quantity} </span>
+      <span className='text-lg btn-color'> {quantity} </span>
       <button
-        className='btn-primary'
+        className='btn-primary btn-bg-color'
         onClick={() => {
           cartDispatch({ type: "DECREMENT", item: product_id });
           callServer({
@@ -35,6 +35,6 @@ export const AddMore = ({ quantity, product_id }) => {
         }}>
         <FontAwesomeIcon icon={faMinus} />
       </button>
-    </div>
+    </>
   );
 };

@@ -10,7 +10,9 @@ export const Sorting = () => {
         Clear All Filters
       </div>
       <div>
-        <legend>Sort By</legend>
+        <legend>
+          <div className='h4'>Sort By</div>
+        </legend>
         <div className='filter-options'>
           <label>
             <input
@@ -26,7 +28,7 @@ export const Sorting = () => {
                 })
               }
             />
-            Price High to Low
+            <span className='input_field'>Price High to Low</span>
           </label>
         </div>
         <div className='filter-options'>
@@ -44,7 +46,7 @@ export const Sorting = () => {
                 })
               }
             />
-            Price Low to High
+            <span className='input_field'>Price Low to High</span>
           </label>
         </div>
       </div>

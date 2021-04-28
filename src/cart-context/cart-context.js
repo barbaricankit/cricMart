@@ -3,16 +3,17 @@ import {
   useContext,
   useEffect,
   useReducer,
+  useRef,
   useState,
 } from "react";
 import manageProductReducer from "./reducerFunction";
-import { GetProductsList } from "../database/products.db";
 import * as util from "../utility/util_functions";
+import callServer from "../api_calls/axios";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const { data, error, loader } = GetProductsList();
   const [productList, setProductList] = useState([]);
+  const navbar = useRef(null);
   const [cartState, cartDispatch] = useReducer(manageProductReducer, {
     cartItems: [],
     wishList: [],
@@ -22,8 +23,9 @@ export const CartProvider = ({ children }) => {
     totalCartValue: 0,
     priceRangeMaxValue: 50000,
     searchText: "",
-    showLoader: loader,
-    error: error,
+    showLoader: "loader",
+    error: "error",
+    showNav: false,
   });
 
   const composedFunction = util.composeFunction(
@@ -56,13 +58,17 @@ export const CartProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const { data: productList } = data;
-    setProductList(productList || []);
-  }, [data]);
-
-  useEffect(() => {}, []);
+    (async () => {
+      const { data: productList } = await callServer({
+        url: "/products",
+        type: "GET",
+      });
+      setProductList(productList || []);
+    })();
+  }, []);
   return (
-    <CartContext.Provider value={{ cartState, cartDispatch, filteredArray }}>
+    <CartContext.Provider
+      value={{ cartState, cartDispatch, filteredArray, navbar }}>
       {children}
     </CartContext.Provider>
   );

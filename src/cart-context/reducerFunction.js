@@ -23,13 +23,18 @@ const manageProductReducer = (state, action) => {
       return { ...state, priceRangeMaxValue: action.value };
     case "SEARCH_ACTION":
       return { ...state, searchText: action.value };
+    case "SHOW_NAV":
+      return {
+        ...state,
+        showNav: action.value !== undefined ? action.value : !state.showNav,
+      };
     case "CLEARALLFILTERS":
       return {
         ...state,
         sortByPrice: null,
         fastDelivery: false,
         showAllProducts: true,
-        priceRangeMaxValue: 1000,
+        priceRangeMaxValue: 50000,
       };
 
     default:

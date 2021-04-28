@@ -5,12 +5,14 @@ import { AddMore } from "../ProductCard/AddMore";
 
 export const ProductPage = () => {
   const {
-    cartState: { cartItems: cart },
+    cartState: { cartItems: cart, wishList },
     filteredArray,
     cartDispatch,
   } = useCart();
   const { productId } = useParams();
-  const product = filteredArray.find(({ _id }) => _id == productId);
+  const product = filteredArray.find(({ _id }) => _id === productId);
+  const isWishlisted = wishList.find((id) => id === productId);
+  const isAddedToCart = cart.find(({ productId: id }) => id === productId);
   return (
     <div className='page-product'>
       <div className='product'>
@@ -18,39 +20,30 @@ export const ProductPage = () => {
           <img src={product.img} alt={product.name} />
         </div>
         <div className='productDetails'>
-          <p className='h1'>{product.name}</p>
+          <p className='h1 btn-color'>{product.name}</p>
 
           <br />
           {product.desc.map((desc) => (
             <p className='h5'>{desc}</p>
           ))}
           <br />
-
-          <p>Rs. {product.price}</p>
-          <div>
-            {cart.map((cartProduct) => {
-              if (cartProduct.id === product.id)
-                return cartProduct.quantity !== 0 ? (
-                  <>
-                    <AddMore product={product} cartProduct={cartProduct} />
-                  </>
-                ) : (
-                  <AddtoCart product={product} />
-                );
-              return "";
-            })}
-
+          <p className='h5'>{product.offers}</p>
+          <br />
+          <p className='left-margin bold h5'>Rs. {product.price}</p>
+          <div className='left-margin top-margin'>
             <button
-              className='btn-secondary'
+              className='btn-secondary btn-color '
               onClick={() => cartDispatch({ type: "WISHLIST", item: product })}>
-              {cart.map((cartProduct) => {
-                if (cartProduct.id === product.id)
-                  return cartProduct.isWishListed
-                    ? "Remove From Wishlist"
-                    : "Add to WishList";
-                return "";
-              })}
+              {isWishlisted ? "Remove From Wishlist" : "Add to WishList"}
             </button>
+            {isAddedToCart ? (
+              <AddMore
+                product_id={isAddedToCart.productId}
+                quantity={isAddedToCart.quantity}
+              />
+            ) : (
+              <AddtoCart product_id={productId} />
+            )}
           </div>
         </div>
       </div>

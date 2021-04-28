@@ -8,6 +8,7 @@ import { useAuth } from "./auth-context";
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const { state } = useLocation();
   const navigate = useNavigate();
   const { dispatch } = useAuth();
@@ -23,30 +24,46 @@ export const Login = () => {
   };
   return (
     <div className='signin-form'>
-      <h1>Sign In</h1>
+      <div className='h1'>Sign In</div>
+
       <div>
-        <input
-          type='text'
-          placeholder='Enter Username'
-          className='inputbox'
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        <label for='inputbox_1' className='text-label'>
+          Username<span className='red-color'>*</span>
+        </label>
+        <div>
+          <input
+            id='inputbox_1'
+            className='textbox'
+            type='text'
+            placeholder='Enter Username'
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
         <br />
+        <label for='inputbox_2' className='text-label'>
+          Enter Password<span className='red-color'>*</span>
+        </label>
         <div className='password-textbox'>
           <input
-            type='password'
+            id='inputbox_2'
+            className='textbox'
+            type={showPassword ? "text" : "password"}
             placeholder='Enter Password'
-            className='inputbox filled'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <span className='btn-show-password'>
+          <span
+            className='btn-show-password'
+            onClick={() => setShowPassword((prevalue) => !prevalue)}>
             <FontAwesomeIcon icon={faEye} size='1x' />
           </span>
         </div>
+        <br />
       </div>
-      <button className='btn-primary' onClick={() => loginHandler()}>
+      <button
+        className='btn-primary btn-bg-color'
+        onClick={() => loginHandler()}>
         Sign In
       </button>
       <p>

@@ -6,7 +6,7 @@ const HomepageButtons = () => {
   return (
     <>
       <NavLink to='/products/All'>
-        <button className='btn-secondary'>Continue Shopping</button>
+        <button className='btn-secondary btn-color'>Continue Shopping</button>
       </NavLink>
       <HomepageSignInSignOut />
     </>

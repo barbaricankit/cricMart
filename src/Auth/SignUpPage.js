@@ -1,6 +1,6 @@
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { useNavigate } from "react-router";
 import callServer from "../api_calls/axios";
 import { useAuth } from "./auth-context";
@@ -25,6 +25,7 @@ const manageUser = (state, action) => {
 };
 const SignUpPage = () => {
   const { dispatch } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [
     { firstName, lastName, email, userName, password, re_enterPassword },
@@ -72,74 +73,113 @@ const SignUpPage = () => {
   };
   return (
     <div className='signin-form'>
-      <input
-        type='text'
-        placeholder='First Name'
-        className='inputbox'
-        value={firstName}
-        onChange={(e) =>
-          setUserDetails({ type: "FIRST_NAME", value: e.target.value })
-        }
-      />
-      <input
-        type='text'
-        placeholder='Last Name'
-        className='inputbox'
-        value={lastName}
-        onChange={(e) =>
-          setUserDetails({ type: "LAST_NAME", value: e.target.value })
-        }
-      />
-      <input
-        type='email'
-        placeholder='Email Id'
-        className='inputbox'
-        value={email}
-        onChange={(e) =>
-          setUserDetails({ type: "EMAIL", value: e.target.value })
-        }
-      />
-      <input
-        type='text'
-        placeholder='Username'
-        className='inputbox'
-        value={userName}
-        onChange={(e) =>
-          setUserDetails({ type: "USER_NAME", value: e.target.value })
-        }
-      />
+      <div className='h1'>Sign Up</div>
+      <label for='inputbox_1' className='text-label'>
+        First Name<span className='red-color'>*</span>
+      </label>
+      <div>
+        <input
+          id='inputbox_1'
+          className='textbox'
+          type='text'
+          placeholder='First Name'
+          value={firstName}
+          onChange={(e) =>
+            setUserDetails({ type: "FIRST_NAME", value: e.target.value })
+          }
+        />
+      </div>
+      <br />
+      <label for='inputbox_2' className='text-label'>
+        Last Name<span className='red-color'>*</span>
+      </label>
+      <div>
+        <input
+          id='inputbox_2'
+          className='textbox'
+          type='text'
+          placeholder='Last Name'
+          value={firstName}
+          onChange={(e) =>
+            setUserDetails({ type: "LAST_NAME", value: e.target.value })
+          }
+        />
+      </div>
+      <br />
+      <label for='inputbox_3' className='text-label'>
+        Email Id<span className='red-color'>*</span>
+      </label>
+      <div>
+        <input
+          id='inputbox_3'
+          className='textbox'
+          type='email'
+          placeholder='Email Id'
+          value={email}
+          onChange={(e) =>
+            setUserDetails({ type: "EMAIL", value: e.target.value })
+          }
+        />
+      </div>
+      <br />
+      <label for='inputbox_4' className='text-label'>
+        Username<span className='red-color'>*</span>
+      </label>
+      <div>
+        <input
+          id='inputbox_4'
+          className='textbox'
+          type='text'
+          placeholder='Enter Username'
+          value={userName}
+          onChange={(e) =>
+            setUserDetails({ type: "USER_NAME", value: e.target.value })
+          }
+        />
+      </div>
+      <br />
+      <label for='inputbox_4' className='text-label'>
+        Enter Password<span className='red-color'>*</span>
+      </label>
       <div className='password-textbox'>
         <input
-          type='password'
+          id='inputbox_4'
+          className='textbox'
+          type={showPassword ? "text" : "password"}
           placeholder='Enter Password'
-          className='inputbox filled'
           value={password}
           onChange={(e) =>
             setUserDetails({ type: "PASSWORD", value: e.target.value })
           }
         />
-        <span className='btn-show-password'>
-          <FontAwesomeIcon icon={faEye} size='1x' />
-        </span>
       </div>
-
+      <br />
+      <label for='inputbox_4' className='text-label'>
+        Re-Enter Password<span className='red-color'>*</span>
+      </label>
       <div className='password-textbox'>
         <input
-          type='password'
+          id='inputbox_4'
+          className='textbox'
+          type={showPassword ? "text" : "password"}
           placeholder='Re-Enter Password'
-          className='inputbox filled'
           value={re_enterPassword}
           onChange={(e) =>
             setUserDetails({ type: "RE_ENTER_PASSWORD", value: e.target.value })
           }
         />
-        <span className='btn-show-password'>
+        {password !== re_enterPassword && password && re_enterPassword && (
+          <span class='error-text'>Passwords do not match</span>
+        )}
+        <span
+          className='btn-show-password'
+          onClick={() => setShowPassword((prevalue) => !prevalue)}>
           <FontAwesomeIcon icon={faEye} size='1x' />
         </span>
       </div>
 
       <div>
-        <button className='btn-primary' onClick={() => signup()}>
+        <button className='btn-primary btn-bg-color' onClick={() => signup()}>
           Submit
         </button>
       </div>

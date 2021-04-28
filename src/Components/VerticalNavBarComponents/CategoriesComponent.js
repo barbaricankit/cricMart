@@ -4,20 +4,24 @@ export const Categories = () => {
 
   return (
     <nav className='categories-link'>
-      <div className="h5">Categories</div>
+      <div className='h4'>Categories</div>
       <NavLink
         className='nav-link'
-        activeStyle={{ backgroundColor: "#34D399" ,padding:"0.5rem",color:"white"}}
+        activeStyle={{
+          color: "#1E40AF",
+        }}
         to='/products/All'>
-        <div>All</div>
+        <span>All</span>
       </NavLink>
       {categories.map((category, index) => (
         <NavLink
           key={index}
           className='nav-link'
-          activeStyle={{ backgroundColor: "#34D399" ,padding:"0.5rem",color:"white"}}
+          activeStyle={{
+            color: "#1E40AF",
+          }}
           to={`/products/${category}`}>
-          <div style={{ cursor: "pointer" }}>{category}</div>
+          <span style={{ cursor: "pointer" }}>{category}</span>
         </NavLink>
       ))}
     </nav>

@@ -8,13 +8,15 @@ const HomepageSignInSignOut = () => {
     <>
       {!state.login && (
         <NavLink to='/signin'>
-          <button className='btn-primary'>Sign In</button>
+          <button className='btn-primary btn-bg-color left-margin'>
+            Sign In
+          </button>
         </NavLink>
       )}
       {state.login && (
         <NavLink to='/'>
           <button
-            className='btn-primary'
+            className='btn-primary btn-bg-color left-margin'
             onClick={() => logoutFunction(navigate)}>
             Sign Out
           </button>

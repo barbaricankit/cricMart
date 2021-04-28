@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://boiling-refuge-80947.herokuapp.com/",
 });
 
 const callServer = async ({ url, type, body }) => {
@@ -21,14 +21,6 @@ const callServer = async ({ url, type, body }) => {
           return postData;
         }
         break;
-      // case "DELETE":
-      //   const { data: deletedata } = await instance.delete(`${url}`, {
-      //     body: body,
-      //   });
-      //   if (deletedata.success) {
-      //     return deletedata;
-      //   }
-      //   break;
       default:
         break;
     }

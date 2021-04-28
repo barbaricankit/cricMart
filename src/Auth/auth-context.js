@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
     } else {
       dispatch({ type: "LOGOUT" });
     }
-  }, []);
+  }, [cartDispatch]);
 
   useEffect(() => {
     (async () => {
@@ -54,8 +54,6 @@ export const AuthProvider = ({ children }) => {
         }));
 
       if (data?.success) {
-        console.log(state.navigateTo);
-
         localStorage.setItem(
           "user",
           JSON.stringify({
@@ -77,7 +75,7 @@ export const AuthProvider = ({ children }) => {
         cartDispatch({ type: "SET_CART_ITEMS", products: data.cart });
       }
     })();
-  }, [state]);
+  }, [state, cartDispatch]);
 
   const logoutFunction = (navigate) => {
     localStorage?.removeItem("user");
