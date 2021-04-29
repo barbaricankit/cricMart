@@ -99,7 +99,7 @@ const SignUpPage = () => {
           className='textbox'
           type='text'
           placeholder='Last Name'
-          value={firstName}
+          value={lastName}
           onChange={(e) =>
             setUserDetails({ type: "LAST_NAME", value: e.target.value })
           }
