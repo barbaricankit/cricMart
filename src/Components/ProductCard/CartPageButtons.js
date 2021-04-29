@@ -1,6 +1,6 @@
 import { faRupeeSign } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import RemoveProductFromCart from "./RemovePorductFromCart";
+// import RemoveProductFromCart from "./RemovePorductFromCart";
 
 const CartPageButtons = ({ product, quantity }) => {
   return (
