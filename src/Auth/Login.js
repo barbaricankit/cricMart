@@ -27,12 +27,11 @@ export const Login = () => {
       <div className='h1'>Sign In</div>
 
       <div>
-        <label for='inputbox_1' className='text-label'>
+        <label className='text-label'>
           Username<span className='red-color'>*</span>
         </label>
         <div>
           <input
-            id='inputbox_1'
             className='textbox'
             type='text'
             placeholder='Enter Username'
@@ -41,12 +40,11 @@ export const Login = () => {
           />
         </div>
         <br />
-        <label for='inputbox_2' className='text-label'>
+        <label className='text-label'>
           Enter Password<span className='red-color'>*</span>
         </label>
         <div className='password-textbox'>
           <input
-            id='inputbox_2'
             className='textbox'
             type={showPassword ? "text" : "password"}
             placeholder='Enter Password'

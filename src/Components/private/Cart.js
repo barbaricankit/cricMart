@@ -13,7 +13,11 @@ export const Cart = () => {
       <BackToProductListPage />
       <TotalCartValue cartItem={cartItem} />
       {cartItem.map((product) => (
-        <CartPageCard product={product} quantity={product.quantity} />
+        <CartPageCard
+          key={product._id}
+          product={product}
+          quantity={product.quantity}
+        />
       ))}
     </div>
   );

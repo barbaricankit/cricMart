@@ -13,8 +13,14 @@ const authReducer = (state, action) => {
       return { ...state, login: true };
     case "LOGOUT":
       return { ...state, login: false };
+    case "SET_NAVIGATE":
+      return {
+        ...state,
+        navigate: action.navigate,
+        navigateTo: action.navigateTo,
+      };
     default:
-      break;
+      return state;
   }
 };
 

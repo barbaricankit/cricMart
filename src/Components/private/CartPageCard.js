@@ -1,11 +1,11 @@
-import CartPageButtons from "../ProductCard/CartPageButtons";
-import { ProductCard } from "../ProductCard/ProductCard";
+// import CartPageButtons from "../ProductCard/CartPageButtons";
+// import { ProductCard } from "../ProductCard/ProductCard";
+import CartCard from "./CartCard";
 
 const CartPageCard = ({ product, quantity }) => {
   return (
-    <div key={product._id} className='card card-with-text'>
-      <ProductCard product={product} />
-      <CartPageButtons product={product} quantity={quantity} />
+    <div key={product._id} className='card horizontal-card-with-text'>
+      <CartCard product={product} />
     </div>
   );
 };

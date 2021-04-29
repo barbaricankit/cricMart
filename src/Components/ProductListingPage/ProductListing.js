@@ -2,8 +2,10 @@ import { useParams } from "react-router";
 import { useCart } from "../../cart-context/cart-context";
 import ProductPageCard from "./ProductListingPageCard";
 import { VerticalNavBar } from "../VerticalNavBarComponents/VerticalNavBar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 export const ProductListing = () => {
-  const { filteredArray } = useCart();
+  const { filteredArray, cartState } = useCart();
   const { categoryName } = useParams();
 
   const products =
@@ -15,6 +17,14 @@ export const ProductListing = () => {
     <div className='main-content'>
       <VerticalNavBar />
       <div className='content'>
+        {cartState.showLoader && (
+          <FontAwesomeIcon
+            icon={faCircleNotch}
+            size='4x'
+            className='btn-color fa-spin'
+            style={{ textAlign: "center", margin: " 4rem 40vw" }}
+          />
+        )}
         <div className='cards'>
           {products.map((product) => (
             <ProductPageCard product={product} key={product._id} />

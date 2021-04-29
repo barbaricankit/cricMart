@@ -114,7 +114,9 @@ export const Navigation = () => {
               to='/wishlist'>
               <span className='badge-icon'>
                 <FontAwesomeIcon icon={faHeart} />
-                {wishlist_count && <span class='badge'>{wishlist_count}</span>}
+                {wishlist_count && (
+                  <span className='badge'>{wishlist_count}</span>
+                )}
               </span>
             </NavLink>
 
@@ -125,7 +127,7 @@ export const Navigation = () => {
               to='/cart'>
               <span className='badge-icon'>
                 <FontAwesomeIcon icon={faShoppingCart} />
-                {cart_count && <span class='badge'>{cart_count}</span>}
+                {cart_count && <span className='badge'>{cart_count}</span>}
               </span>
             </NavLink>
 

@@ -4,7 +4,9 @@ export const manageCart = (state, product_id, incOrDec) => {
     cartItems: state.cartItems.find(({ productId }) => productId === product_id)
       ? state.cartItems.map(({ productId, quantity }) =>
           productId === product_id
-            ? { productId, quantity: quantity + incOrDec }
+            ? quantity + incOrDec
+              ? { productId, quantity: quantity + incOrDec }
+              : null
             : { productId, quantity }
         )
       : [...state.cartItems, { productId: product_id, quantity: 1 }],

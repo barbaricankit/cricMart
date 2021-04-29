@@ -23,6 +23,8 @@ const manageProductReducer = (state, action) => {
       return { ...state, priceRangeMaxValue: action.value };
     case "SEARCH_ACTION":
       return { ...state, searchText: action.value };
+    case "SET_LOADER":
+      return { ...state, showLoader: action.value };
     case "SHOW_NAV":
       return {
         ...state,

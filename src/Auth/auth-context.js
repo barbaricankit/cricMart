@@ -16,9 +16,11 @@ export const AuthProvider = ({ children }) => {
     navigateTo: "/",
     userId: null,
   });
+
   useEffect(() => {
     const getUser = JSON.parse(localStorage.getItem("user"));
     if (getUser?.isUserLoggedIn) {
+      dispatch({ type: "LOGIN" });
       (async () => {
         const data = await callServer({
           url: `/user/${getUser.userId}`,

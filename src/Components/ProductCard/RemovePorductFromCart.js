@@ -8,7 +8,7 @@ const RemoveProductFromCart = ({ product_id }) => {
   } = useAuth();
   return (
     <button
-      className='btn-secondary'
+      className='btn-secondary btn-color left-margin'
       onClick={() => {
         cartDispatch({ type: "REMOVE", item: product_id });
         callServer({

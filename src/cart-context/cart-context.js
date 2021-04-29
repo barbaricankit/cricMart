@@ -23,7 +23,7 @@ export const CartProvider = ({ children }) => {
     totalCartValue: 0,
     priceRangeMaxValue: 50000,
     searchText: "",
-    showLoader: "loader",
+    showLoader: true,
     error: "error",
     showNav: false,
   });
@@ -64,6 +64,7 @@ export const CartProvider = ({ children }) => {
         type: "GET",
       });
       setProductList(productList || []);
+      cartDispatch({ type: "SET_LOADER", value: false });
     })();
   }, []);
   return (
