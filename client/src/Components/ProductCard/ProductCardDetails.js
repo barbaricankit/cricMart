@@ -17,7 +17,7 @@ const ProductCardDetails = ({
         <p className='desc'>{category}</p>
         <p className='desc bold'>Rs. {price}</p>
         <div>
-          <NavLink state={product} to={`/products/product/${name}/${id}`}>
+          <NavLink state={product} to={`/product/${id}`}>
             <button className='btn-secondary btn-color'>See Details</button>{" "}
           </NavLink>
           <ShowAddCartButton product_id={id} quantity={quantity} />

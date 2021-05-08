@@ -20,7 +20,7 @@ export const Filtering = () => {
               checked={cartState.showAllProducts}
               onChange={() =>
                 cartDispatch({
-                  type: "SHOWALLPRODUCTS",
+                  type: "SHOW_ALL_PRODUCTS",
                 })
               }
             />
@@ -34,7 +34,7 @@ export const Filtering = () => {
               checked={cartState.fastDelivery}
               onChange={() =>
                 cartDispatch({
-                  type: "FASTDELIVERY",
+                  type: "FAST_DELIVERY",
                 })
               }
             />
@@ -53,7 +53,7 @@ export const Filtering = () => {
           value={inputPrice}
           onInput={(e) => {
             setPrice(e.target.value);
-            cartDispatch({ type: "PRICERANGE", value: e.target.value });
+            cartDispatch({ type: "PRICE_RANGE", value: e.target.value });
           }}
         />
         <div>
@@ -64,7 +64,7 @@ export const Filtering = () => {
             <input
               onChange={(e) => {
                 setPrice(e.target.value);
-                cartDispatch({ type: "PRICERANGE", value: e.target.value });
+                cartDispatch({ type: "PRICE_RANGE", value: e.target.value });
               }}
               type='number'
               value={inputPrice}

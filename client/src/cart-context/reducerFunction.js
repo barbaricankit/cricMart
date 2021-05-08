@@ -13,13 +13,13 @@ const manageProductReducer = (state, action) => {
       return util.removeItemFromCart(state, action.item);
     case "WISHLIST":
       return util.manageWishList(state, action.item);
-    case "sortByPrice":
+    case "SORT_BY_PRICE":
       return { ...state, sortByPrice: action.payload };
-    case "SHOWALLPRODUCTS":
+    case "SHOW_ALL_PRODUCTS":
       return { ...state, showAllProducts: !state.showAllProducts };
-    case "FASTDELIVERY":
+    case "FAST_DELIVERY":
       return { ...state, fastDelivery: !state.fastDelivery };
-    case "PRICERANGE":
+    case "PRICE_RANGE":
       return { ...state, priceRangeMaxValue: action.value };
     case "SEARCH_ACTION":
       return { ...state, searchText: action.value };
@@ -30,7 +30,7 @@ const manageProductReducer = (state, action) => {
         ...state,
         showNav: action.value !== undefined ? action.value : !state.showNav,
       };
-    case "CLEARALLFILTERS":
+    case "CLEAR_ALL_FILTERS":
       return {
         ...state,
         sortByPrice: null,

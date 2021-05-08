@@ -21,10 +21,7 @@ const productrouter = require("./routes/products.route.js");
 const userrouter = require("./routes/users.route.js");
 const cartrouter = require("./routes/cart.route.js");
 const wishlistrouter = require("./routes/wishlist.route.js");
-//const checkAuthentication = require("./utils/util_func");
 
-//app.use("/cart", checkAuthentication);
-//app.use("/wishlist", checkAuthentication);
 app.use(productrouter);
 app.use(userrouter);
 app.use(cartrouter);
