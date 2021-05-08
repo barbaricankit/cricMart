@@ -6,7 +6,7 @@ export const Sorting = () => {
     <>
       <div
         className='opt-clear-all'
-        onClick={() => cartDispatch({ type: "CLEARALLFILTERS" })}>
+        onClick={() => cartDispatch({ type: "CLEAR_ALL_FILTERS" })}>
         Clear All Filters
       </div>
       <div>
@@ -23,7 +23,7 @@ export const Sorting = () => {
               }
               onChange={() =>
                 cartDispatch({
-                  type: "sortByPrice",
+                  type: "SORT_BY_PRICE",
                   payload: "Price_High_to_Low",
                 })
               }
@@ -41,7 +41,7 @@ export const Sorting = () => {
               }
               onChange={() =>
                 cartDispatch({
-                  type: "sortByPrice",
+                  type: "SORT_BY_PRICE",
                   payload: "Price_Low_to_High",
                 })
               }

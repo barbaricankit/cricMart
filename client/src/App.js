@@ -19,7 +19,7 @@ export default function App() {
         <Route path='/'>
           <Homepage />
         </Route>
-        <Route path='/products/product/:productname/:productId'>
+        <Route path='/product/:productId'>
           <ProductPage />
         </Route>
         <Route path='/products/:categoryName'>

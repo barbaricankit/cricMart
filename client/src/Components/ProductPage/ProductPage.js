@@ -14,6 +14,7 @@ export const ProductPage = () => {
   const { state } = useAuth();
   const navigate = useNavigate();
   const { productId } = useParams();
+  console.log(productId);
   const product = filteredArray.find(({ _id }) => _id === productId);
   const isWishlisted = wishList.find((id) => id === productId);
   const isAddedToCart = cart.find(({ productId: id }) => id === productId);
@@ -22,21 +23,21 @@ export const ProductPage = () => {
       <BackToProductListPage />
       <div className='product'>
         <div className='productImg'>
-          <img src={product.img} alt={product.name} />
+          <img src={product?.img} alt={product?.name} />
         </div>
         <div className='productDetails'>
-          <p className='h1 btn-color'>{product.name}</p>
+          <p className='h1 btn-color'>{product?.name}</p>
 
           <br />
-          {product.desc.map((desc, index) => (
+          {product?.desc.map((desc, index) => (
             <p className='h5' key={index}>
               {desc}
             </p>
           ))}
           <br />
-          <p className='h5'>{product.offers}</p>
+          <p className='h5'>{product?.offers}</p>
           <br />
-          <p className='left-margin bold h5'>Rs. {product.price}</p>
+          <p className='left-margin bold h5'>Rs. {product?.price}</p>
           <div className='left-margin top-margin'>
             <button
               className='btn-secondary btn-color '
