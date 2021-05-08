@@ -10,7 +10,7 @@ const productSchema = new Schema({
   discountPercentage: Number,
   warranty: String,
   offers: Array,
-  category_name: { type: mongoose.Schema.Types.String, ref: Category },
+  category_name: { type: Schema.Types.String, ref: Category },
   stock_quantity: Number,
   isFastDeliveryAvailable: Boolean,
   img: String,

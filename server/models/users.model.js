@@ -9,8 +9,8 @@ const userSchema = new Schema({
   email: String,
   username: String,
   email_id: String,
-  cartId: { type: mongoose.Schema.Types.ObjectId, ref: Cart },
-  wishlistId: { type: mongoose.Schema.Types.ObjectId, ref: WishList },
+  cartId: { type: Schema.Types.ObjectId, ref: Cart },
+  wishlistId: { type: Schema.Types.ObjectId, ref: WishList },
 });
 userSchema.plugin(passportLocalMongoose);
 const Users = mongoose.model("User", userSchema);

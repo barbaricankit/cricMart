@@ -5,13 +5,13 @@ const cartSchema = new Schema({
   products: [
     {
       productId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: Products,
       },
       quantity: Number,
     },
   ],
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  userId: { type: Schema.Types.ObjectId, ref: "User" },
 });
 const Cart = mongoose.model("Cart", cartSchema);
 module.exports = { Cart };
