@@ -1,6 +1,5 @@
 const passport = require("passport");
-
-const Users = require("../models/users.model");
+const { Users } = require("../models/users.model");
 
 const checkAuthentication = async (req, res, next) => {
   try {
