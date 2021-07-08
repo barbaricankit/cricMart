@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const categorySchema = new Schema({
   products: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Product",
     },
   ],
