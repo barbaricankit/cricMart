@@ -1,6 +1,5 @@
 const passport = require('passport');
 const { Cart } = require('../models/cart.model');
-
 const { Users } = require('../models/users.model');
 const { WishList } = require('../models/wishlist.model');
 
