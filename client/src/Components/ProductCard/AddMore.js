@@ -15,7 +15,7 @@ export const AddMore = ({ quantity, product_id }) => {
     } = await callServer({
       url: `/${userId}/cart`,
       type: "POST",
-      body: { productId: product_id, quantity: quantity + incOrDec },
+      body: { productId: product_id, quantity:incOrDec },
     });
     if (success) {
       cartDispatch({ type: "SET_CART_ITEMS", products });

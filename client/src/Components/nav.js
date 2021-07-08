@@ -26,8 +26,8 @@ export const Navigation = () => {
   const menuBtn = useRef(null);
   const navigate = useNavigate();
 
-  const wishlist_count = wishList.length ? wishList.length : null;
-  const cart_count = cartItems.length ? cartItems.length : null;
+  const wishlist_count = wishList?.length ? wishList?.length : null;
+  const cart_count = cartItems?.length ? cartItems?.length : null;
   useEffect(() => {
     document.addEventListener("click", (e) => {
       if (
@@ -42,7 +42,7 @@ export const Navigation = () => {
   }, [cartDispatch, navbar]);
 
   return (
-    <>
+
       <header>
         <div className={`search_bar ${showSearchBox ? "show-search_bar" : ""}`}>
           <FontAwesomeIcon
@@ -143,7 +143,7 @@ export const Navigation = () => {
                   onClick={() => setShowOptions((showOptions) => !showOptions)}>
                   <img
                     className='avatar-sm nav-avatar'
-                    src='https://scontent.fccu18-1.fna.fbcdn.net/v/t1.18169-9/24131585_1571374906276687_711347645622454609_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=174925&_nc_ohc=qYsIzSYAFNYAX8n-I26&_nc_ht=scontent.fccu18-1.fna&oh=a01b504ade77a7298f5b2dab96ed5f7a&oe=609CED38'
+                    src='https://scontent.fccu18-1.fna.fbcdn.net/v/t1.18169-9/24131585_1571374906276687_711347645622454609_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=174925&_nc_ohc=Ex9RJjzt0V0AX8YxaHy&_nc_ht=scontent.fccu18-1.fna&oh=17b854d52fc8cda7de93e8a5f6405ff8&oe=60EC0738'
                     alt='userimage'
                   />
                 </span>
@@ -169,6 +169,6 @@ export const Navigation = () => {
           </div>
         </div>
       </header>
-    </>
+  
   );
 };
