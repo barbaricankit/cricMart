@@ -127,13 +127,17 @@
 .user-sub-menu {
 	color: black;
 }
-
+.text-lg {
+	padding: 0;
+}
 .nav-link {
 	color: black;
 	padding: 0.5rem 1rem;
 	border-radius: 5px;
 }
-
+.left-marginn {
+	margin-left: 0.5rem;
+}
 .page-home {
 	margin-top: 6rem;
 	text-align: center;

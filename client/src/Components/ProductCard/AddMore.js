@@ -24,7 +24,7 @@ export const AddMore = ({ quantity, product_id }) => {
   return (
     <>      
       <button
-        className='btn-primary btn-bg-color left-margin'
+        className='btn-primary btn-bg-color left-marginn'
         onClick={() => modifyCart({ incOrDec: -1 })}>
         <FontAwesomeIcon icon={faMinus} />
       </button>
