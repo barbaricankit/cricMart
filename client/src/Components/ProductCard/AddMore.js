@@ -22,17 +22,17 @@ export const AddMore = ({ quantity, product_id }) => {
     }
   };
   return (
-    <>
+    <>      
       <button
         className='btn-primary btn-bg-color left-margin'
-        onClick={() => modifyCart({ incOrDec: 1 })}>
-        <FontAwesomeIcon icon={faPlus} />
+        onClick={() => modifyCart({ incOrDec: -1 })}>
+        <FontAwesomeIcon icon={faMinus} />
       </button>
       <span className='text-lg btn-color'> {quantity} </span>
       <button
         className='btn-primary btn-bg-color'
-        onClick={() => modifyCart({ incOrDec: -1 })}>
-        <FontAwesomeIcon icon={faMinus} />
+        onClick={() => modifyCart({ incOrDec: 1 })}>
+        <FontAwesomeIcon icon={faPlus} />
       </button>
     </>
   );

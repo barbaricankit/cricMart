@@ -9,12 +9,18 @@ const checkNewCart = async (req, res, next) => {
 	} else {
 		if (req.method == 'POST') {
 			const { productId, quantity } = req.body;
-			const newCart = new Cart({ userId, products: { productId, quantity } });
 			const product = await Products.findById(productId);
-			product.stock_quantity -= quantity;
-			await product.save();
-			await newCart.save();
-			res.status(200).json({ success: true, cart: newCart });
+			if (product.stock_quantity - quantity > 0) {
+				const newCart = new Cart({ userId, products: { productId, quantity } });
+				product.stock_quantity -= quantity;
+				await product.save();
+				await newCart.save();
+				res.status(200).json({ success: true, updatedCart: newCart });
+			} else {
+				product.stock_quantity = 0;
+				await product.save();
+				res.status(200).json({ success: true, updatedCart: {} });
+			}
 		} else if (req.method == 'GET') {
 			res.status(200).json({ success: true, message: 'No cart is there for this user' });
 		}
@@ -43,7 +49,7 @@ const checkProductIsInCart = async (req, res, next) => {
 		res.status(200).json({
 			success: true,
 			message: 'Updated the cart successfully',
-			updatedCart: updatedCart
+			updatedCart
 		});
 	}
 };
@@ -64,6 +70,7 @@ const updateCart = async (req, res, next) => {
 	} else {
 		product.stock_quantity = 0;
 		req.updatedCart = cart;
+		await product.save();
 	}
 	next();
 };
