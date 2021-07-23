@@ -9,4 +9,9 @@ Key Features
 - User can search for specific products through search bar
 
 Desktop View
-![alt text]
+
+![alt text](https://res.cloudinary.com/ankitneog/image/upload/v1627050222/Desktop_View_jeblqw.png)
+
+Mobile View
+
+![alt text](https://res.cloudinary.com/ankitneog/image/upload/v1627050215/Mobile_View_bmpsb4.png)
