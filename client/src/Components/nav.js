@@ -143,7 +143,7 @@ export const Navigation = () => {
                   onClick={() => setShowOptions((showOptions) => !showOptions)}>
                   <img
                     className='avatar-sm nav-avatar'
-                    src='https://scontent.fccu18-1.fna.fbcdn.net/v/t1.18169-9/24131585_1571374906276687_711347645622454609_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=174925&_nc_ohc=Ex9RJjzt0V0AX8YxaHy&_nc_ht=scontent.fccu18-1.fna&oh=17b854d52fc8cda7de93e8a5f6405ff8&oe=60EC0738'
+                    src='https://res.cloudinary.com/ankitneog/image/upload/v1627040297/My_Image_qtnqch.jpg'
                     alt='userimage'
                   />
                 </span>
