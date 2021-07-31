@@ -14,7 +14,7 @@ export const ProductPage = () => {
   const { state } = useAuth();
   const navigate = useNavigate();
   const { productId } = useParams();
-  console.log(productId);
+  
   const product = filteredArray.find(({ _id }) => _id === productId);
   const isWishlisted = wishList.find((id) => id === productId);
   const isAddedToCart = cart.find(({ productId: id }) => id === productId);

@@ -26,8 +26,8 @@ export const Navigation = () => {
   const menuBtn = useRef(null);
   const navigate = useNavigate();
 
-  const wishlist_count = wishList.length ? wishList.length : null;
-  const cart_count = cartItems.length ? cartItems.length : null;
+  const wishlist_count = wishList?.length ? wishList?.length : null;
+  const cart_count = cartItems?.length ? cartItems?.length : null;
   useEffect(() => {
     document.addEventListener("click", (e) => {
       if (
@@ -42,7 +42,7 @@ export const Navigation = () => {
   }, [cartDispatch, navbar]);
 
   return (
-    <>
+
       <header>
         <div className={`search_bar ${showSearchBox ? "show-search_bar" : ""}`}>
           <FontAwesomeIcon
@@ -169,6 +169,6 @@ export const Navigation = () => {
           </div>
         </div>
       </header>
-    </>
+  
   );
 };
