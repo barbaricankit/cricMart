@@ -1,5 +1,6 @@
 @import "https://fluidcssv2.netlify.app/styles.css";
-
+@import "./Components/Checkout/address.css";
+@import "./Components/private/cart.css";
 .nav__item {
 	margin-right: 1.4rem;
 	font-size: large;
@@ -18,6 +19,11 @@
 }
 .category-name {
 	cursor: pointer;
+}
+.disabled{
+
+    background-color: #8395b1 !important;
+	cursor:default;
 }
 .btn-back-to-product-list {
 	padding: 1rem;

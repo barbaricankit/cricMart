@@ -1,6 +1,6 @@
-import WishListButton from "./WishListButton";
-import ProductCardDetails from "./ProductCardDetails";
-import ProductCardImage from "./ProductCardImage";
+import WishListButton from './WishListButton'
+import ProductCardDetails from './ProductCardDetails'
+import ProductCardImage from './ProductCardImage'
 
 export const ProductCard = ({ product }) => {
   return (
@@ -10,7 +10,7 @@ export const ProductCard = ({ product }) => {
         product_id={product._id}
         wishlist={product.isWishListed}
       />
-      <div className='card-details'>
+      <div className="card-details">
         <ProductCardDetails
           product={product}
           id={product._id}
@@ -21,5 +21,5 @@ export const ProductCard = ({ product }) => {
         />
       </div>
     </>
-  );
-};
+  )
+}

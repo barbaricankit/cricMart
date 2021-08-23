@@ -1,0 +1,14 @@
+@media only screen and (max-width:600px){
+    .card{
+        margin:var(--margin-width) auto
+    }
+    .content {
+       
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media only screen and (min-width:1100px){
+
+}

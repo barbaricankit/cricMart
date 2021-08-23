@@ -20,7 +20,7 @@ const ProductCardDetails = ({
           <NavLink state={product} to={`/product/${id}`}>
             <button className='btn-secondary btn-color'>See Details</button>{" "}
           </NavLink>
-          <ShowAddCartButton product_id={id} quantity={quantity} />
+          <ShowAddCartButton product_id={id} quantity={quantity} product={product} />
         </div>
       </div>
     </>

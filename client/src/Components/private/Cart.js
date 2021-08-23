@@ -1,17 +1,18 @@
-import { useCart } from "../../cart-context/cart-context";
-import BackToProductListPage from "./BackToProductListPage";
-import CartPageCard from "./CartPageCard";
-import TotalCartValue from "./TotalCartValue";
+import { useCart } from '../../cart-context/cart-context'
+import BuyNow from '../Checkout/BuyNow'
+import BackToProductListPage from './BackToProductListPage'
+import CartPageCard from './CartPageCard'
 
 export const Cart = () => {
-  const { filteredArray } = useCart();
+  const { filteredArray } = useCart()
 
-  const cartItem = filteredArray.filter((product) => product.quantity);
+  const cartItem = filteredArray.filter((product) => product.quantity)
 
   return (
-    <div className='page-cart'>
+    <div className="page-cart">
       <BackToProductListPage />
-      <TotalCartValue cartItem={cartItem} />
+      <BuyNow cartItem={cartItem} />
+
       {cartItem.map((product) => (
         <CartPageCard
           key={product._id}
@@ -20,5 +21,5 @@ export const Cart = () => {
         />
       ))}
     </div>
-  );
-};
+  )
+}

@@ -1,12 +1,12 @@
 import { AddMore } from './AddMore';
 import { AddtoCart } from './AddtoCart';
 
-const ShowAddCartButton = ({ product_id, quantity }) => {
+const ShowAddCartButton = ({ product_id, quantity,product }) => {
 	
 	return quantity >= 0 ? (
-		<AddMore product_id={product_id} quantity={quantity} />
+		<AddMore product_id={product_id} quantity={quantity} product={product}/>
 	) : (
-		<AddtoCart product_id={product_id} />
+		<AddtoCart product_id={product_id} product={product} />
 	);
 };
 

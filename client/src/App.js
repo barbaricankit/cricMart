@@ -1,39 +1,54 @@
-import { Cart } from "./Components/private/Cart";
-import { ProductListing } from "./Components/ProductListingPage/ProductListing";
-import { WishList } from "./Components/private/WishList";
-import "./App.css";
-import { ProductPage } from "./Components/ProductPage/ProductPage";
+import { Cart } from './Components/private/Cart'
+import { ProductListing } from './Components/ProductListingPage/ProductListing'
+import { WishList } from './Components/private/WishList'
+import './App.css'
+import { ProductPage } from './Components/ProductPage/ProductPage'
 
-import { Navigation } from "./Components/nav";
-import { Homepage } from "./Components/Homepage/Homepage";
-import { Routes, Route } from "react-router";
-import { Login } from "./Auth/Login";
-import { PrivateRoute } from "./Components/private/PrivateRoute";
-import SignUpPage from "./Auth/SignUpPage";
+import { Navigation } from './Components/nav'
+import { Homepage } from './Components/Homepage/Homepage'
+import { Routes, Route } from 'react-router'
+import { Login } from './Auth/Login'
+import { PrivateRoute } from './Components/private/PrivateRoute'
+import SignUpPage from './Auth/SignUpPage'
+import { AddAddress } from './Components/Checkout'
+import Addresses from './Components/Checkout/AddressManagement'
+import OrderPlaced from './Components/Checkout/OrderPlaced'
 
 export default function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <Navigation />
       <Routes>
-        <Route path='/'>
+        <Route path="/">
           <Homepage />
         </Route>
-        <Route path='/product/:productId'>
+        <Route path="/product/:productId">
           <ProductPage />
         </Route>
-        <Route path='/products/:categoryName'>
+        <Route path="/products/:categoryName">
           <ProductListing />
         </Route>
-        <PrivateRoute path='/cart' element={<Cart />} />
-        <PrivateRoute path='/wishlist' element={<WishList />} />
-        <Route path='/signin'>
+        <PrivateRoute path="/cart" element={<Cart />} />
+        <PrivateRoute path="/wishlist" element={<WishList />} />
+        <Route path="/signin">
           <Login />
         </Route>
-        <Route path='/signup'>
+        <Route path="/signup">
           <SignUpPage />
         </Route>
+        <PrivateRoute path="/addresses">
+          <Addresses />
+        </PrivateRoute>
+        <PrivateRoute path="/newaddress">
+          <AddAddress />
+        </PrivateRoute>
+        <PrivateRoute path="/editaddress">
+          <AddAddress />
+        </PrivateRoute>
+        <PrivateRoute path="/orderplaced">
+          <OrderPlaced />
+        </PrivateRoute>
       </Routes>
     </div>
-  );
+  )
 }

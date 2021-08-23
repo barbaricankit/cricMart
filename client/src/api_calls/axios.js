@@ -1,31 +1,32 @@
-import axios from 'axios';
+import axios from 'axios'
 
 const instance = axios.create({
-	baseURL: 'https://boiling-refuge-80947.herokuapp.com/'
-});
+  //baseURL: 'https://boiling-refuge-80947.herokuapp.com/'
+  baseURL: 'http://localhost:5000/',
+})
 
 const callServer = async ({ url, type, body }) => {
-	try {
-		switch (type) {
-			case 'GET':
-				const { data: getData } = await instance.get(url);
+  try {
+    switch (type) {
+      case 'GET':
+        const { data: getData } = await instance.get(url)
 
-				if (getData.success) {
-					return getData;
-				}
-				break;
-			case 'POST':
-				const { data: postData } = await instance.post(url, body);
+        if (getData.success) {
+          return getData
+        }
+        break
+      case 'POST':
+        const { data: postData } = await instance.post(url, body)
 
-				if (postData.success) {
-					return postData;
-				}
-				break;
-			default:
-				break;
-		}
-	} catch (error) {
-		return error;
-	}
-};
-export default callServer;
+        if (postData.success) {
+          return postData
+        }
+        break
+      default:
+        break
+    }
+  } catch (error) {
+    return error
+  }
+}
+export default callServer
