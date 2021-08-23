@@ -155,12 +155,6 @@ export const Navigation = () => {
             )}
             {showOptions && (
               <div className="user-menu">
-                <div className="user-sub-menu">
-                  <div>Profile</div>
-                </div>
-                <div className="user-sub-menu">
-                  <div>Your Orders</div>
-                </div>
                 <div
                   className="user-sub-menu"
                   onClick={() => {
